@@ -22,11 +22,6 @@ if gender == "M":
 else:
     kcal1 = round((1.3*(655 + (9.6*x) + (1.8*y1) - (4.7*a)))-300,0)
 
-if gender == "M":
-    kcal2 = round((1.3*(66 + (13.7*x) + (5*y1) - (6.76*a)))+300,0)
-else:
-    kcal2 = round((1.3*(655 + (9.6*x) + (1.8*y1) - (4.7*a)))+300,0)
-
 #Results 
 
 print("\nYour BMI is {}" .format(z))
