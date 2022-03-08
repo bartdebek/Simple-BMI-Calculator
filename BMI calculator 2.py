@@ -19,9 +19,9 @@ z=round(z1,2)
 #Defining correct kcal intake based on Harris-Benedict equatation
 
 if gender == "M":
-    kcal1 = round((1.3*(66 + (13.7*x) + (5*y1) - (6.76*a)))-300,0)
+    kcal = round((1.3*(66 + (13.7*x) + (5*y1) - (6.76*a)))-300,0)
 elif gender == "F":
-    kcal1 = round((1.3*(655 + (9.6*x) + (1.8*y1) - (4.7*a)))-300,0)
+    kcal = round((1.3*(655 + (9.6*x) + (1.8*y1) - (4.7*a)))-300,0)
 else:
     sys.exit("Incorrect gender. Please only use either 'M' for male or 'F' for female")
 
@@ -31,10 +31,10 @@ print("\n\nYour BMI is {}" .format(z))
 print("Correct BMI should be between 18.5 and 24.9")
 
 if z > 24.9:
-    print("\n\nYou are a little bit overweight, try healthier diet and excercising!\n\nFor healthy weight reduction you should eat about {} kcal a day" .format(kcal1))
+    print("\n\nYou are a little bit overweight, try healthier diet and excercising!\n\nFor healthy weight reduction you should eat about {} kcal a day" .format(kcal))
           
 elif z <24.9 and z >= 18.5:
     print("\n\nYour weight is ok, congratulations!")
 
 else:
-    print("\n\nYou are underweight, try gaining some kilograms!\n\nFor healthy weight gain you should eat about {} kcal a day" .format(kcal1))
+    print("\n\nYou are underweight, try gaining some kilograms!\n\nFor healthy weight gain you should eat about {} kcal a day" .format(kcal))
