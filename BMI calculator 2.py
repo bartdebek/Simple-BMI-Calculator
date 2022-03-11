@@ -14,11 +14,11 @@ weight = input("What is your weight?(in kg) ")
 age = float(age)
 weight = float(weight)
 height = float(height)
-heightDevided = float(height) / 100
-BMI = weight / (heightDevided ** 2)
+heightInMeters = float(height) / 100
+BMI = weight / (heightInMeters ** 2)
 roundedBMI = round(BMI,2)
-minWeight = round(18.5 * heightDevided ** 2,1) #Correct min weight
-maxWeight = round(24.9 * heightDevided ** 2,1) #Correct max weight
+minWeight = round(18.5 * heightInMeters ** 2,1) #Correct min weight
+maxWeight = round(24.9 * heightInMeters ** 2,1) #Correct max weight
 kgPday = 300/7000            #Weight loss/gain with 300 calories deficit/surplus
 
 #Defining correct kcal intake based on Harris-Benedict equatation
