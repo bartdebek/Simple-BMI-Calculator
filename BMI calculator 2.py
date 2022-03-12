@@ -2,19 +2,14 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 
-#Survey about individuals parameters
+#Survey about individuals parameters and defining variables
 
 gender = input("What is your gender?(M/F) ")
-age = input("How old are you? ")
-height = input("What is your height?(in cm) ")
-weight = input("What is your weight?(in kg) ")
+age = float(input("How old are you? "))
+height = float(input("What is your height?(in cm) "))
+weight = float(input("What is your weight?(in kg) "))
 
-#Defining variables
-
-age = float(age)
-weight = float(weight)
-height = float(height)
-heightInMeters = float(height) / 100
+heightInMeters = height / 100
 BMI = weight / (heightInMeters ** 2)
 roundedBMI = round(BMI,2)
 minWeight = round(18.5 * heightInMeters ** 2,1) #Correct min weight
