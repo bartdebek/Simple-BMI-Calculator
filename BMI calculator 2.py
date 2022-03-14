@@ -1,6 +1,4 @@
-import sys
-import matplotlib.pyplot as plt
-import numpy as np
+import sys, matplotlib.pyplot as plt, numpy as np
 
 #Survey about individuals parameters and defining variables
 
