@@ -16,10 +16,14 @@ kgPday = 300/7000            #Weight loss/gain with 300 calories deficit/surplus
 
 #Defining correct kcal intake based on Harris-Benedict equatation
 
-if gender == "M":
-    kcal = round((1.3 * (66 + (13.7 * weight) + (5  * height) - (6.76 * age))) - 300,0)
-else:
-    kcal = round((1.3 * (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age))) - 300,0)
+def kcal_calc(weight,height,age,gender):
+    if gender == "M":
+        kcal = round((1.3 * (66 + (13.7 * weight) + (5  * height) - (6.76 * age))) - 300,0)
+    else:
+        kcal = round((1.3 * (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age))) - 300,0)
+    return kcal
+
+kcal = kcal_calc(weight,height,age,gender)
 
 
 #Results 
