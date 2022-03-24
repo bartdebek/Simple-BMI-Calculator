@@ -23,9 +23,6 @@ def kcal_calc(weight,height,age,gender):
         kcal = round((1.3 * (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age))) - 300,0)
     return kcal
 
-kcal = kcal_calc(weight,height,age,gender)
-
-
 #Results 
 
 print("\nYour BMI is {}" .format(roundedBMI))
