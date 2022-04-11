@@ -8,12 +8,12 @@ def bmi(weight, heightInMeters):
     return bmi,roundedBmi
 
 def body_parameters(heightInMeters):
-    minWeight = round(18.5 * heightInMeters ** 2,1) #Correct min weight
-    maxWeight = round(24.9 * heightInMeters ** 2,1) #Correct max weight
-    kgPday = 300/7000            #Weight loss/gain with 300 calories deficit/surplus
+    minWeight = round(18.5 * heightInMeters ** 2,1) # Correct min weight
+    maxWeight = round(24.9 * heightInMeters ** 2,1) # Correct max weight
+    kgPday = 300/7000            # Weight loss/gain with 300 calories deficit/surplus
     return minWeight, maxWeight, kgPday
 
-#Defining correct kcal intake based on Harris-Benedict equatation
+# Defining correct kcal intake based on Harris-Benedict equatation
 
 def kcal_calc(weight,height,age,gender):
     if gender == "M":
