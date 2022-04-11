@@ -1,61 +1,54 @@
-import sys, matplotlib.pyplot as plt, numpy as np
+import sys
+import matplotlib.pyplot as plt
+import numpy as np
+import BMIFuncions as bmif
+
 
 #Survey about individuals parameters and defining variables
 
-gender = input("What is your gender?(M/F) ")
-age = float(input("How old are you? "))
-height = float(input("What is your height?(in cm) "))
-weight = float(input("What is your weight?(in kg) "))
+gender = bmif.gender()
+age = bmif.age()
+height = bmif.height()
+weight = bmif.weight()
 
-heightInMeters = height / 100
-BMI = weight / (heightInMeters ** 2)
-roundedBMI = round(BMI,2)
-minWeight = round(18.5 * heightInMeters ** 2,1) #Correct min weight
-maxWeight = round(24.9 * heightInMeters ** 2,1) #Correct max weight
-kgPday = 300/7000            #Weight loss/gain with 300 calories deficit/surplus
-
-#Defining correct kcal intake based on Harris-Benedict equatation
-
-def kcal_calc(weight,height,age,gender):
-    if gender == "M":
-        kcal = round((1.3 * (66 + (13.7 * weight) + (5  * height) - (6.76 * age))) - 300,0)
-    else:
-        kcal = round((1.3 * (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age))) - 300,0)
-    return kcal
-
-kcal = int(kcal)
 
 #Results 
+heightInMeters = bmif.heightInMeters(height)
+bmi = bmif.bmi(weight, heightInMeters)
+body_parameters = bmif.body_parameters(heightInMeters)
+kcal_calc = bmif.kcal_calc(weight,height,age,gender)
 
-print("\nYour BMI is {}" .format(roundedBMI))
+print(f"\nYour BMI is {bmi[1]}")
 print("Correct BMI should be between 18.5 and 24.9")
-print("Correct weight should be between {}kg and {}kg".format(minWeight,maxWeight))
+print(f"Correct weight should be between {body_parameters[0]} kg and {body_parameters[1]} kg.")
 
-if roundedBMI > 24.9:
-    print("\nYou are a little bit overweight, try healthier diet and excercising!\n\nFor healthy weight reduction you should start eating about {} kcal a day" .format(kcal))
+if bmi[1] > 24.9:
+    print(f"\nYou are a little bit overweight, try healthier diet and excercising!\n\nFor healthy weight reduction you should start eating about {kcal_calc} kcal a day,")
+    print(f"\n then gradually increase that number so you are always on kcal surplus.")
           
-elif roundedBMI < 24.9 and roundedBMI >= 18.5:
+elif bmi[1] < 24.9 and bmi[1] >= 18.5:
     print("\nYour weight is ok, congratulations!")
 
 else:
-    print("\nYou are underweight, try gaining some kilograms!\n\nFor healthy weight gain you should start eating about {} kcal a day" .format(kcal))
+    print(f"\nYou are underweight, try gaining some kilograms!\n\nFor healthy weight gain you should start eating about {kcal_calc} kcal a day,")
+    print(f"\n then gradually reduce that number so you are always on deficit")
 
 
-if roundedBMI > 24.9: 
-    correctWeight = weight - maxWeight #number of kg over correct weight
-    rng = round(correctWeight / kgPday) #number of days needed to accomplish correct weight
+if bmi[1] > 24.9: 
+    correctWeight = weight - body_parameters[1] #number of kg over correct weight
+    rng = round(correctWeight / body_parameters[2]) #number of days needed to accomplish correct weight
     daysAxis = np.arange(0, rng, 1) #definition of "days" axis
     weightAxis = weight - daysAxis * 0.043 #definition of "weight" axis
-    print("Following this rule you will reach correct weight in about {} days.".format(rng))
+    print(f"Following this rule you will reach correct weight in about {rng} days.")
 
-elif roundedBMI < 18.5: 
-    correctWeight = minWeight - weight #number of kg under correct weight
-    rng = round(correctWeight / kgPday) #number of days needed to accomplish correct weight
+elif bmi[1] < 18.5: 
+    correctWeight = body_parameters[0] - weight #number of kg under correct weight
+    rng = round(correctWeight / body_parameters[2]) #number of days needed to accomplish correct weight
     daysAxis = np.arange(0, rng, 1) #definition of "days" axis
     weightAxis = weight + daysAxis * 0.043 #definition of "weight" axis
-    print("Following this rule you will reach correct weight in about {} days.".format(rng))
+    print(f"Following this rule you will reach correct weight in about {rng} days.")
    
-else: sys.exit("The End")
+else: sys.exit("Thank you!")
 
 print("\nGraph showing this path in simplified way:")
 # plotting the points
