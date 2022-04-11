@@ -4,7 +4,7 @@ import numpy as np
 import BMIFuncions as bmif
 
 
-#Survey about individuals parameters and defining variables
+# Survey about individuals parameters and defining variables
 
 gender = bmif.gender()
 age = bmif.age()
@@ -12,7 +12,7 @@ height = bmif.height()
 weight = bmif.weight()
 
 
-#Results 
+# Results 
 heightInMeters = bmif.heightInMeters(height)
 bmi = bmif.bmi(weight, heightInMeters)
 body_parameters = bmif.body_parameters(heightInMeters)
@@ -35,26 +35,26 @@ else:
 
 
 if bmi[1] > 24.9: 
-    correctWeight = weight - body_parameters[1] #number of kg over correct weight
-    rng = round(correctWeight / body_parameters[2]) #number of days needed to accomplish correct weight
-    daysAxis = np.arange(0, rng, 1) #definition of "days" axis
-    weightAxis = weight - daysAxis * 0.043 #definition of "weight" axis
+    correctWeight = weight - body_parameters[1] # Number of kg over correct weight
+    rng = round(correctWeight / body_parameters[2]) # Number of days needed to accomplish correct weight
+    daysAxis = np.arange(0, rng, 1) # Definition of "days" axis
+    weightAxis = weight - daysAxis * 0.043 # Definition of "weight" axis
     print(f"Following this rule you will reach correct weight in about {rng} days.")
 
 elif bmi[1] < 18.5: 
-    correctWeight = body_parameters[0] - weight #number of kg under correct weight
-    rng = round(correctWeight / body_parameters[2]) #number of days needed to accomplish correct weight
-    daysAxis = np.arange(0, rng, 1) #definition of "days" axis
-    weightAxis = weight + daysAxis * 0.043 #definition of "weight" axis
+    correctWeight = body_parameters[0] - weight # Number of kg under correct weight
+    rng = round(correctWeight / body_parameters[2]) # Number of days needed to accomplish correct weight
+    daysAxis = np.arange(0, rng, 1) # Definition of "days" axis
+    weightAxis = weight + daysAxis * 0.043 # Definition of "weight" axis
     print(f"Following this rule you will reach correct weight in about {rng} days.")
    
 else: sys.exit("Thank you!")
 
 print("\nGraph showing this path in simplified way:")
-# plotting the points
+# Plotting the points
 plt.plot(daysAxis, weightAxis)
 plt.xlabel("Days")
 plt.ylabel("Weight")
  
-# function to show the plot
+# Function to show the plot
 plt.show()
