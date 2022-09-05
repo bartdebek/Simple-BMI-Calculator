@@ -23,9 +23,9 @@ def height():
 
 def gender():
     gender = "wrong"
-    while gender not in ('M','F'):
+    while gender.lower() not in ('m','f'):
         gender = input("What is your gender?(M/F) ")
-        if gender not in ('M','F'):
+        if gender.lower() not in ('m','f'):
             print("Please only provide 'M' or 'F'")
             continue
         break
